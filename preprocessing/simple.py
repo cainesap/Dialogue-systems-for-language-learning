@@ -20,7 +20,11 @@ import os
 import tensorflow as tf
 
 from sklearn.model_selection import train_test_split
-from utils import preprocessing_utils as base
+
+import sys
+sys.path.append('utils')
+import preprocessing_utils as base
+
 def question_answers(conversations):
     """ Divide the dataset into two sets: questions and answers. """
     questions, answers = [], []

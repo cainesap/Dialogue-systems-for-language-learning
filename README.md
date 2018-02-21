@@ -11,7 +11,7 @@ Based on:
 
 2)  [Building End-To-End Dialogue Systems Using Generative Hierarchical Neural Network Models](https://arxiv.org/pdf/1507.04808.pdf)
 
-Created by Tudor Paraschivescu for the Cambridge UROP project "Dialogue systems for language learning".
+Created by Tudor Paraschivescu for the Cambridge UROP project "Dialogue systems for language learning". (Working paper available on request to apc38 @ cam.ac.uk)
 
 
 Dependencies
@@ -21,15 +21,19 @@ Preprocessing: scikit-learn (for train-test split), tqdm (for checking progress)
 
 Tensorflow can be installed by following the [tensorflow installation instructions](https://www.tensorflow.org/install/). Note that a virtualenv installation is recommended, with pip install, and that you need pip version >=8.1.
 
+As in `requirements.txt`, also run: `pip install nltk, numpy, scipy, sklearn, six, tqdm`
+
 
 Data
 -------
 
 For training a model download the [Cornell Movie-Dialogs Corpus](http://www.mpi-sws.org/~cristian/data/cornell_movie_dialogs_corpus.zip)
 
-Change to the `Dialogue-systems-for-language-learning` (root) directory, create a 'data/cornell' directory path and unzip the 'cornell movie-dialogs corpus' folder from the zip file into it.
+Change to the `Dialogue-systems-for-language-learning` (root) directory, `mkdir -p data/cornell` and unzip the 'cornell movie-dialogs corpus' folder from the zip file into it.
 
-Make sure you're in the root directory again and run the script 'simple_pre.py' located in 'preprocessing/cornell'. This will take care of the preprocessing. 
+Make sure you're in the root directory again and run the script `python preprocessing/cornell/simple_pre.py`. This will process the Cornell corpus and output to `data/cornell/processed/simple`. _N.B._ For the hierarchical model referred to in 'Training' below, I suspect you need to run `preprocessing/cornell/hier.py` but this is undocumented and I haven't tried it yet.
+
+Also make an `output` directory in root.
 
 
 Training
@@ -38,11 +42,11 @@ Training
 To begin training a simple nmt model run 'chatbot/run.py' using the arguments:
   
         --src=enc --tgt=dec \
-        --vocab_file="<repo-path>\data\cornell\processed\nmt\vocab"  \
-        --train_prefix="<repo-path>\data\cornell\processed\nmt\train" \
-        --dev_prefix="<repo-path>\data\cornell\processed\nmt\val"  \
-        --test_prefix="<repo-path>\data\cornell\processed\nmt\test" \
-        --out_dir="<repo-path>\output\cornell" \
+        --vocab_file="<repo-path>/data/cornell/processed/simple/vocab"  \
+        --train_prefix="<repo-path>/data/cornell/processed/simple/train" \
+        --dev_prefix="<repo-path>/data/cornell/processed/simple/val"  \
+        --test_prefix="<repo-path>/data/cornell/processed/simple/test" \
+        --out_dir="<repo-path>/output/cornell" \
         --num_train_steps=12000 \
         --steps_per_stats=100 \
         --num_layers=2 \
@@ -53,11 +57,11 @@ To begin training a simple nmt model run 'chatbot/run.py' using the arguments:
 To begin training a hierarchical model run 'chatbot/run.py' using the arguments:
 
     --src=enc --tgt=dec \
-    --vocab_file="<repo-path>\data\cornell\processed\nmt\vocab"  \
-    --train_prefix="<repo-path>\data\cornell\processed\nmt\train" \
-    --dev_prefix="<repo-path>\data\cornell\processed\nmt\val"  \
-    --test_prefix="<repo-path>\data\cornell\processed\nmt\test" \
-    --out_dir="<repo-path>\output\cornell" \
+    --vocab_file="<repo-path>/data/cornell/processed/hier/vocab"  \
+    --train_prefix="<repo-path>/data/cornell/processed/hier/train" \
+    --dev_prefix="<repo-path>/data/cornell/processed/hier/val"  \
+    --test_prefix="<repo-path>/data/cornell/processed/hier/test" \
+    --out_dir="<repo-path>/output/cornell" \
     --num_train_steps=12000 \
     --steps_per_stats=100 \
     --num_layers=2 \
@@ -94,8 +98,8 @@ Chatting
 To chat with your model run it with the arguments:
 
     --chat=True \
-    --chat_logs_output_file="<repo-path>\output\cornell\chat_logs.txt" \
-    --out_dir="<repo-path>\Chatbot\output\cornell" \
+    --chat_logs_output_file="<repo-path>/output/cornell/chat_logs.txt" \
+    --out_dir="<repo-path>/Chatbot/output/cornell" \
     --architecture=hier \
     --beam_width=5 \
     --top_responses=3 \

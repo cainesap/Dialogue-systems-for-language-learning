@@ -23,8 +23,12 @@ import os
 
 import tensorflow as tf
 
-from utils import misc_utils as utils
-from utils import vocab_utils
+import sys
+sys.path.append('utils')
+#from utils import misc_utils as utils
+#from utils import vocab_utils
+import misc_utils as utils
+import vocab_utils
 
 utils.check_tensorflow_version()
 

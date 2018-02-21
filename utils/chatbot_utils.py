@@ -23,8 +23,10 @@ import random
 
 import tensorflow as tf
 
-from utils import evaluation_utils
-from utils import misc_utils as utils
+import sys
+sys.path.append('utils')
+import evaluation_utils
+import misc_utils as utils
 
 
 def decode_and_evaluate(name,

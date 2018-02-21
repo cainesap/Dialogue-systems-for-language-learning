@@ -19,9 +19,15 @@ for use in the simple model
 
 import os
 
-from preprocessing import simple
-import preprocessing.cornell.base as base
-from utils import preprocessing_utils
+import sys
+sys.path.append('preprocessing')
+sys.path.append('utils')
+#from preprocessing import simple
+#import preprocessing.cornell.base as base
+#from utils import preprocessing_utils
+import simple
+import cornell.base as base
+import preprocessing_utils
 
 PROCESSED_DIR_PATH = os.path.join(base.PROCESSED_DIR_PATH, 'simple')
 

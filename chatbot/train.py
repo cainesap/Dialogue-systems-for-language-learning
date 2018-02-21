@@ -27,15 +27,23 @@ import time
 
 import tensorflow as tf
 
-from chatbot.models.simple_model import SimpleModel
-from chatbot.models.hier_model import HierarchicalModel
-from chatbot import inference
-from chatbot.models import model_helper
-from utils import iterator_utils
-from utils import end2end_iterator_utils
-from utils import misc_utils as utils
-from utils import chatbot_utils
-from utils import vocab_utils
+import sys
+sys.path.append('chatbot')
+sys.path.append('utils')
+from models.simple_model import SimpleModel
+from models.hier_model import HierarchicalModel
+import inference
+from models import model_helper
+#from utils import iterator_utils
+#from utils import end2end_iterator_utils
+#from utils import misc_utils as utils
+#from utils import chatbot_utils
+#from utils import vocab_utils
+import iterator_utils
+import end2end_iterator_utils
+import misc_utils as utils
+import chatbot_utils
+import vocab_utils
 
 utils.check_tensorflow_version()
 

@@ -25,14 +25,23 @@ import random
 import numpy as np
 import tensorflow as tf
 
+import sys
+sys.path.append('chatbot')
+sys.path.append('utils')
+
 # Make the tf library stop printing warnings about cpu modules
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-from chatbot import inference
-from chatbot import train
-from utils import evaluation_utils
-from utils import misc_utils as utils
-from chatbot import argument_parser
+#from chatbot import inference
+#from chatbot import train
+#from utils import evaluation_utils
+#from utils import misc_utils as utils
+#from chatbot import argument_parser
+import inference
+import train
+import evaluation_utils
+import misc_utils as utils
+import argument_parser
 
 utils.check_tensorflow_version()
 

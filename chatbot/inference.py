@@ -24,16 +24,31 @@ import random
 import tensorflow as tf
 from tensorflow.python.ops import lookup_ops
 
-from chatbot.models.simple_model import SimpleModel
-from chatbot.models.hier_model import HierarchicalModel
-from chatbot.models import model_helper
-from utils import iterator_utils
-from utils import end2end_iterator_utils
-from utils import misc_utils as utils
-from utils import chatbot_utils
-from utils import vocab_utils
-from utils import preprocessing_utils
-from assessment.input_assessment import get_user_input, overall_score
+import sys
+sys.path.append('chatbot')
+sys.path.append('utils')
+sys.path.append('assessment')
+
+#from chatbot.models.simple_model import SimpleModel
+#from chatbot.models.hier_model import HierarchicalModel
+#from chatbot.models import model_helper
+#from utils import iterator_utils
+#from utils import end2end_iterator_utils
+#from utils import misc_utils as utils
+#from utils import chatbot_utils
+#from utils import vocab_utils
+#from utils import preprocessing_utils
+#from assessment.input_assessment import get_user_input, overall_score
+from models import simple_model
+from models import hier_model
+from models import model_helper
+import iterator_utils
+import end2end_iterator_utils
+import misc_utils as utils
+import chatbot_utils
+import vocab_utils
+import preprocessing_utils
+from input_assessment import get_user_input, overall_score
 
 class InferModel(
     collections.namedtuple("InferModel",

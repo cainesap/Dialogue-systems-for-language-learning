@@ -21,11 +21,15 @@ from __future__ import division
 from __future__ import print_function
 
 import tensorflow as tf
-from chatbot.models.base_model import BaseModel
 
-import utils.misc_utils as utils
-from chatbot.models import model_helper
-from utils import iterator_utils
+import sys
+sys.path.append('chatbot')
+sys.path.append('utils')
+
+from models.base_model import BaseModel
+import misc_utils as utils
+from models import model_helper
+import iterator_utils
 
 utils.check_tensorflow_version()
 

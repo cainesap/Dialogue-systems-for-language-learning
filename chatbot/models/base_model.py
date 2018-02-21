@@ -24,9 +24,13 @@ import abc
 import tensorflow as tf
 from tensorflow.python.layers import core as layers_core
 
-import utils.misc_utils as utils
-from chatbot.models import model_helper
-from utils import iterator_utils
+import sys
+sys.path.append('chatbot')
+sys.path.append('utils')
+
+import misc_utils as utils
+from models import model_helper
+import iterator_utils
 
 utils.check_tensorflow_version()
 

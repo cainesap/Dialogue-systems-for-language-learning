@@ -21,8 +21,10 @@ import subprocess
 
 import tensorflow as tf
 
-from utils.scripts import bleu
-from utils.scripts import rouge
+import sys
+sys.path.append('utils')
+from scripts import bleu
+from scripts import rouge
 
 __all__ = ["evaluate"]
 

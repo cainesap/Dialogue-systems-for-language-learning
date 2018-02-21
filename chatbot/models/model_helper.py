@@ -23,7 +23,10 @@ from __future__ import print_function
 import time
 import tensorflow as tf
 
-import utils.misc_utils as utils
+import sys
+sys.path.append('utils')
+
+import misc_utils as utils
 
 
 def get_device_str(device_id, num_gpus):

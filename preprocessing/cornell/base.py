@@ -19,8 +19,11 @@ https://github.com/chiphuyen/stanford-tensorflow-tutorials/blob/master/assignmen
 """
 
 import os
-from utils.preprocessing_utils import make_dir
-from utils.misc_utils import get_parent_dir
+
+import sys
+sys.path.append('utils')
+from preprocessing_utils import make_dir
+from misc_utils import get_parent_dir
 
 FILE_PATH = os.path.abspath(__file__)
 DATA_PATH = os.path.join(get_parent_dir(get_parent_dir(get_parent_dir(FILE_PATH))),
